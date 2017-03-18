@@ -330,6 +330,6 @@ int main() {
         cout << c << " ";
     }
     cout << endl;*/
-        
+    
     return 0;
 }
