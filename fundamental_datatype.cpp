@@ -95,7 +95,7 @@ int fundamental_datatype() {
         std::cerr << "Data must refer to the same ISBN." << std::endl;
         return -1;
     }
-
+    
     return 0;
 }
 
