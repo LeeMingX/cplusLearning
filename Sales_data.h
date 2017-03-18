@@ -2,7 +2,7 @@
 // Created by lxGhost on 2017/3/14.
 //
 
-#ifndef SALES_DATA_H
+#ifndef SALES_DATA_H    //头文件保护符
 #define SALES_DATA_H
 
 #include <string>
