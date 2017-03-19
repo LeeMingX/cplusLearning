@@ -2,6 +2,8 @@
 #include <string>
 #include <cctype>
 #include <vector>
+#include <cstddef>
+#include <cstring>
 /*第三章 字符串、向量和数组*/
 using std::cout; using std::cin;
 using std::endl;
@@ -313,8 +315,23 @@ int main() {
     /*vector<int> vals;
     vector<int> person(11, 0);
     int grade;
+
+    //改良版
     while (cin >> grade) {
-        vals.push_back(grade);
+        if(grade > 0 && grade <= 100) {
+            auto iter = person.begin();
+            for(int i = 0; i < grade/10; ++i) {
+                ++iter;
+            }
+            *iter = *iter + 1;
+        }
+    }*/
+
+    //笨拙版
+    /*while (cin >> grade) {
+        if(grade > 0 && grade <= 100) {
+            vals.push_back(grade);
+        }
     }
 
     for(auto it = vals.begin(); it != vals.end(); ++it) {
@@ -330,6 +347,151 @@ int main() {
         cout << c << " ";
     }
     cout << endl;*/
-    
+
+    //定义一个含有10个int的数组，另每个元素的值就是其下标值
+    /*constexpr size_t array_size = 10;
+    int ia[array_size];
+    for(int i = 0; i <array_size; ++i) {
+        ia[i] = i;
+        cout << ia[i] << " ";
+    }
+    cout << endl;
+
+    int ib[array_size] = {};
+    for(size_t i = 0; i < array_size; ++i) {
+        ib[i] = ia[i];
+    }
+    for(auto c : ib) {
+        cout << c << " ";
+    }
+    cout << endl;
+
+    vector<int> v1(10);
+    int i = 0;
+    for(auto it = v1.begin(); it != v1.end(); ++it) {
+        *it = i++;
+    }
+    for(auto c : v1) {
+        cout << c << " ";
+    }
+    cout << endl;*/
+
+//    利用指针将数组中的元素置为0
+    /*constexpr size_t arraySize = 5;
+    int a[arraySize] = {5, 3, 8, 12, 32};
+    int *p = a;
+    for(int i = 0; i < arraySize; ++i) {
+        *(p++) = 0;
+    }
+    for (auto c : a) {
+        cout << c << " ";
+    }
+    cout << endl;*/
+
+//    比较两个数组是否相等，比较两个vector对象是否相等
+    /*vector<int> v1{4, 5};
+    vector<int> v2{4, 5, 7};
+    if(v1 == v2) {
+        cout << "v1 equals v2" << endl;
+    } else {
+        cout << "v1 not equals v2" << endl;
+    }*/
+
+//    当两个字符串的其中一个到达尾元素的下一位置或者两个字符串相等时退出循环
+//    未完成代码
+    /*int a1[] = {4, 5};
+    int a2[] = {4, 5};
+    int *p1 = a1, *p2 = a2;
+    while (*p1 == *p2) {
+        ++p1;
+        ++p2;
+    }
+    if(*p1 != *p2) {
+        cout << "a1 not equals a2" << endl;
+    } else {
+        cout << "a1 equals a2" << endl;
+    }*/
+
+//    比较两个string对象的字符串，比较两个c风格字符串
+    /*string s1 = "hello";
+    string s2 = "Hello";
+    char c1[] = {'h', 'e', 'l', 'l', 'o'};
+    char c2[] = {'H', 'e', 'l', 'l', 'o'};
+
+    if(s1 > s2) {
+        cout << "s1 > s2" << endl;
+    } else {
+        cout << "s1 <= s2" << endl;
+    }
+
+    if(strcmp(c1, c2) < 0) {
+        cout << "c1 < c2" << endl;
+    } else {
+        cout << "c1 >= c2" << endl;
+    }*/
+
+//    定义两个字符数组，然后定义另外一个字符数组来存储这两个数组连接后的值
+    /*constexpr char c1[] = "pig";
+    constexpr char c2[] = "dump";
+    char result[11];
+    strcpy(result, c1);
+    strcat(result, " is ");
+    strcat(result, c2);
+
+    for(auto c : result) {
+        cout << c;
+    }
+    cout << endl;
+    cout << strlen(c1) << endl;*/
+
+//    将一个整型的vector对象拷贝给一个整型数组
+    /*vector<int> v1{1, 3, 4, 5};
+    int a1[4];
+    int i = 0;
+    for(auto iter = v1.begin(); iter != v1.end(); ++iter) {
+        a1[i++] = *iter;
+    }
+
+    for(auto c : a1) {
+        cout<< c << endl;
+    }*/
+
+    int ia[3][4];
+    int val = 0;
+    for(auto &row : ia) {
+        for(auto &col : row) {
+            col = val;
+            ++val;
+        }
+    }
+
+//    编写三个版本的程序，均能输出ia的元素
+
+//    版本一：使用范围for语句管理迭代过程
+    for(const int (&r)[4] : ia) {
+        for(int p : r) {
+            cout << p << " ";
+        }
+    }
+    cout << endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
