@@ -9,6 +9,7 @@ using std::cout; using std::cin;
 using std::endl;
 using std::string;
 using std::vector;
+using int_array = int[4];
 int main() {
 //    包含using声明后重做50-100的和的计算
     /*int i = 50, sum = 0;
@@ -468,30 +469,44 @@ int main() {
 //    编写三个版本的程序，均能输出ia的元素
 
 //    版本一：使用范围for语句管理迭代过程
-    for(const int (&r)[4] : ia) {
+    /*for(const int (&r)[4] : ia) {
         for(int p : r) {
             cout << p << " ";
         }
     }
+    cout << endl;*/
+
+//    版本二：使用普通的for循环，用下标管理迭代过程
+    /*for(int i = 0; i < 3; ++i) {
+        for(int j = 0; j < 4; ++j) {
+            cout << ia[i][j] << " ";
+        }
+    }
+    cout << endl;*/
+
+//    版本三：使用普通for循环，用指针管理迭代过程,使用类型别名
+    /*for(int_array *p = ia; p != ia + 3; ++p) {
+        for(int *q = *p; q != *p + 4; ++q) {
+            cout << *q << " ";
+        }
+    }
+    cout << endl;*/
+
+//    不使用类型别名
+    /*for(int (*p)[4] = ia; p != ia + 3; ++p) {
+        for (int *q = *p; q != *p + 4; ++q) {
+            cout << *q << " ";
+        }
+    }
+    cout << endl;*/
+
+    for(const auto &row : ia) {
+        for(auto col : row) {
+            cout << col << " ";
+        }
+    }
     cout << endl;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //常量指针必须初始化，*const的写法表明指针本身也是常量
 
     return 0;
 }
