@@ -10,7 +10,7 @@ using std::endl;
 using std::string;
 using std::vector;
 using int_array = int[4];
-int main() {
+int string_vector_array() {
 //    包含using声明后重做50-100的和的计算
     /*int i = 50, sum = 0;
     do {
