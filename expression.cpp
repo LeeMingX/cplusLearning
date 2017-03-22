@@ -18,7 +18,7 @@ using std::endl;
 using std::string;
 using std::vector;
 
-int main(int argc, const char * argv[]) {
+int expression(int argc, const char * argv[]) {
 //    计算一个表达式的值
     /*int v1 = 12 / 3 * 4;
     int v2 = 5 * 15;
