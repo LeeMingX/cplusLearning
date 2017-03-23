@@ -139,7 +139,6 @@ int main(int argc, const char * argv[]) {
     
 //    元音大小写、连续字符序列ff、fl、fi，空格、制表符、换行符的数量
 //    连续字符序列是重复统计的。如果每一个字符只能统计一次，需要在swich控制语句外实现
-//    每个字符统计一次的方法还没有完成
     /*vector<char> cvec;
     auto cur = cvec.begin();
     while(getline(cin, str)) {          //通过getline()方法可以从标准输入中获取空格、制表符、换行符
@@ -206,6 +205,28 @@ int main(int argc, const char * argv[]) {
                         ++sntCnt;
                     }
                     break;
+            }
+        }
+//        每个字符只统计一次的算法
+        auto pre = str.begin();
+        auto next = pre + 1;
+        while(next != str.end()) {
+            if(*pre == 'f') {
+                if(*next == 'f' || *next == 'i' || *next == 'l') {
+                    ++noSuccSpecCnt;
+                    if(next + 1 != str.end()) {
+                        pre = next;
+                        ++pre;
+                        next = pre + 1;
+                    } else
+                        break;
+                } else {
+                    pre = next;
+                    ++next;
+                }
+            } else {
+                pre = next;
+                ++next;
             }
         }
     }
