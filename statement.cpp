@@ -221,12 +221,10 @@ int main(int argc, const char * argv[]) {
                     } else
                         break;
                 } else {
-                    pre = next;
-                    ++next;
+                    pre = next++;
                 }
             } else {
-                pre = next;
-                ++next;
+                pre = next++;
             }
         }
     }
@@ -239,6 +237,64 @@ int main(int argc, const char * argv[]) {
     "Number of space and next and table:\t" << sntCnt << "\n" <<
     "Number of special:\t" << specCnt << "\n" <<
     "Number of none-successive:\t" << noSuccSpecCnt << endl;*/
+    
+    /*从标准输入中读取若干string对象并查找连续重复出现的单词，即
+    一个单词紧跟着这个单词本身，如果存在这样的单词，要求记录连续
+    重复出现的最大次数以及对应的单词，如果不存在，输出一条信息说明*/
+    /*vector<string> vocGroup;
+    vector<vector<string>> classific(10);
+    string voc;
+    while(cin >> voc) {
+        vocGroup.push_back(voc);
+    }
+    
+    auto sBegin = vocGroup.begin();
+    unsigned occured_num = 0;
+    unsigned max_num = 0;
+    string temp = " ";
+    while(sBegin != vocGroup.end()) {
+//        开始记第一个数，如果已经读到了单词对象的尾元素，该尾元素必然与上一个元素相同，比较
+//        当前计数和最大计数来处理尾元素的值
+        if(*sBegin == temp) {
+            ++occured_num;
+            ++sBegin;
+            if(sBegin == vocGroup.end()) {
+                if(occured_num >= max_num) {
+                    max_num = occured_num;
+                    classific[max_num].push_back(*(sBegin - 1));
+                }
+            }
+        } else {
+//            当读入数改变时，记下当前出现次数最多的词，并将这个单词存入相应的查找字典里
+            if(occured_num >= max_num) {
+                max_num = occured_num;
+                classific[max_num].push_back(*(sBegin - 1));
+            }
+            occured_num = 1;
+            temp = *sBegin;
+            ++sBegin;
+        }
+    }
+    
+    if(max_num > 1) {
+        string result = " ";
+        for(auto v : classific[max_num]) {
+            result += v + ",";
+        }
+        for(auto c = result.begin(); c != result.end(); ++c) {
+            if(*c == ' ' && c == result.begin()) {
+                *c = '\b';
+            }
+            if(*c == ',' && c == result.end() - 1) {
+                *c = '.';
+            }
+        }
+        cout << "The occured mostly string is " << result << "\n" <<
+        "The occured time is " << max_num << endl;
+    } else {
+        cout << "None of the string occured more than one time...." << endl;
+    }*/
+    
     
     return 0;
 }
