@@ -12,13 +12,14 @@
 #include <string>
 #include <iostream>
 #include <vector>
-/*第四章 语句*/
-using std::cin; using std::cout;
+#include <stdexcept>
+/*第五章 语句*/
+using std::cin; using std::cout; using std::cerr;
 using std::endl;
 using std::string;
 using std::vector;
-
-int main(int argc, const char * argv[]) {
+using std::runtime_error;
+int statement(int argc, const char * argv[]) {
 //    使用“,“运算符重写1-10这十个数的和，不使用块语句
     /*int val = 1, sum = 0;
     for(; val <= 10; sum += val, ++val)
@@ -295,6 +296,146 @@ int main(int argc, const char * argv[]) {
         cout << "None of the string occured more than one time...." << endl;
     }*/
     
+//    for循环实现while循环的效果
+    /*vector<int> ivec;
+    int val;
+    while (cin >> val) {
+        ivec.push_back(val);
+    }
+    
+    auto beg = ivec.begin();
+    while (beg != ivec.end() && *beg >= 0)
+        ++beg;
+    if(beg == ivec.end()) {
+        cout << "No negative number.." << endl;
+    } else{
+        cout << "The first negative number is " << *beg << endl;
+    }
+    
+    for (; beg != ivec.end() && *beg >= 0;) {
+        ++beg;
+    }
+    if(beg == ivec.end()) {
+        cout << "No negative number.." << endl;
+    } else{
+        cout << "The first negative number is " << *beg << endl;
+    }*/
+    
+//    假设有两个整型的vector对象，检验其中一个是否是另一个的前缀
+    /*vector<int> ivec1{1,1,2}, ivec2{0,1,1,2,4,5,2}, curVec;
+//    int val;
+//    cout << "Please enter the first vector :" << endl;
+//    while (cin >> val) {
+//        ivec1.push_back(val);
+//        if (val == '\n') {
+//            <#statements#>
+//        }
+//    }
+//    cout << "Please enter the second vector :" << endl;
+//    while (cin >> val) {
+//        ivec2.push_back(val);
+//    }
+    
+    decltype(ivec1.begin()) head;
+    if (ivec1.size() >= ivec2.size()) {
+        curVec = ivec2;
+        head = ivec1.begin();
+    } else {
+        curVec = ivec1;
+        head = ivec2.begin();
+    }
+    
+    for (auto cFirst = curVec.begin(); cFirst != curVec.end(); ++cFirst) {
+        if(*cFirst == *head)
+            ++head;
+        else {
+            cout << "It's not the prefix" << endl;
+            break;
+        }
+    }
+    
+    if (*(head - 1) == *(curVec.end() - 1)) {
+        cout << "It's the prefix" << endl;
+    }*/
+    
+//    提示用户输入两个string对象，然后挑出较短的那个输出出来
+    /*string req;
+    
+    do {
+        string str1, str2;
+        cout << "Please enter the two string: " << endl;
+        cin >> str1 >> str2;
+//        比较过程
+        decltype(str1.size()) x1 = str1.size();
+        decltype(str2.size()) x2 = str2.size();
+        if (x1 > x2) {
+            cout << str2 << endl;
+        } else {
+            cout << str1 << endl;
+        }
+        
+        cout << "More? Enter yes or no: " << endl;
+        cin >> req;
+    } while (!req.empty() && req[0] != 'n');*/
+    
+//    从标准输入中读取string对象的序列直到连续出现两个相同的单词或者所有单词都读完
+//    使用while循环一次读取一个单词，当一个单词连续出现两次breke挑出循环，若没有则输出信息
+    /*string str, pre = " ";
+    unsigned times = 0;
+    while (cin >> str) {
+        if(!str.empty() && str == pre) {
+            ++times;
+            cout << str << " was occured twice." << endl;
+            break;
+        } else {
+            pre = str;
+            times = 1;
+        }
+    }
+    if (times < 2) {
+        cout << "No vocabulary occured twice closely.." << endl;;
+    }*/
+    
+//    重写上例程序，使其找到的单词必须是以大写字母开头的
+    /*string str, pre = " ";
+    unsigned times = 0;
+    while (cin >> str) {
+        if(!str.empty() && str == pre) {
+            if (islower(str[0])) {
+                continue;
+            } else {
+                ++times;
+            }
+            cout << str << " was occured twice." << endl;
+            break;
+        } else {
+            pre = str;
+            times = 1;
+        }
+    }
+    if (times < 2) {
+        cout << "No vocabulary occured twice closely.." << endl;;
+    }*/
+    
+//    从标准输入中读取两个整数，输出第一个整数除以第二个整数的结果
+//    当第二个数是0是引发异常，将异常处理放在与用户交互的代码中，用catch捕捉一场然后处理
+    int val1, val2;
+    cout << "Enter two numbers : " << endl;
+    while (cin >> val1 >> val2) {
+        try {
+            if(val2 == 0) throw runtime_error("Data shouldn't be zero!!!");
+            else {
+                float result = static_cast<float>(val1)/val2;
+                cout << val1 << " divides " << val2 << " values " << result << endl;
+                break;
+            }
+        } catch (runtime_error err) {
+            cerr << err.what() << endl;
+            
+            cout << "Please enter the new group with two numbers: " << endl;
+            continue;
+        }
+    }
     
     return 0;
 }
