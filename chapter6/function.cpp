@@ -21,7 +21,7 @@ using std::string;
 using std::vector;
 using std::runtime_error;
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char *argv[]) {
     
     /*int i1,i2;
     cout << "Enter two numbers: " << endl;
@@ -57,11 +57,39 @@ int main(int argc, const char * argv[]) {
     int *p = &pi;
     cout << "The bigger number is " << compare(i, p) << endl;*/
     
-    int i = 5, r = 7;
+    /*int i = 5, r = 7;
     int *pi = &i, *pr = &r;
     swapPointerWithPointer(&pi, &pr);
     cout << "The result behind exchange of pointer is " << *pi <<
-    " " << *pr << endl;
+    " " << *pr << endl;*/
+    
+    /*int i = 0, j[2] = {0, 1};
+    printWithInteger(j, i);
+    pringWithPointer(std::begin(j), std::end(j), i);
+    printWithFor(j, 2, i);*/
+    
+//    打印运行main函数时传入的参数
+    /*for (size_t i = 1; i < argc; ++i) {
+        cout << argv[i] << endl;
+    }*/
+    
+    /*cout << "The argument list equals " << calArgvSum({1, 2, 3, 4}) << endl;*/
+    
+    /*int ia[10];
+    for (int i = 0; i != 10; ++i) {
+        get(ia, i) = i;
+    }
+    for(auto c : ia) {
+        cout << c << endl;
+    }*/
+    
+    /*vector<string> vstr{"hello", "pig", "your"};
+    auto end = vstr.size() - 1;
+    printVectorWithRecursion(vstr, end);*/
+    
+    arrPtr(2)[2] = 6;
+    cout << arrPtr(2)[2] << endl;
+    
     
     return 0;
 }
