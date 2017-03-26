@@ -1,14 +1,19 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 #include <string>
+#include <initializer_list>
+#include <vector>
 
 using std::string;
+using std::vector;
+using std::initializer_list;
 
+using StrArry = string[10];
 //求阶乘的函数，val接受要求阶乘的值
 int fact(int val);
 //有交互过程的求解阶乘的函数，返回用户输入值的函数
 int mutualFact();
-//递归求阶乘，好像不太规范
+//递归求阶乘
 int recursionFact(int val);
 //返回一个数的绝对值
 double absoluteValue(double val);
@@ -32,4 +37,25 @@ int compare(int ival, const int *p);
 void swapPointerWithRefer(int *&p1, int *&p2);
 //函数交换两个int指针，使用指针
 void swapPointerWithPointer(int **p1, int **p2);
+//打印数组元素的函数
+void printWithInteger(const int *ia, int val);
+void pringWithPointer(const int *beg, const int *end, int val);
+void printWithFor(const int ia[], size_t n, int i);
+//函数参数是initializer_list<int>类型的对象，函数的功能是计算列表中所有元素的和
+unsigned calArgvSum(initializer_list<int> il);
+//通过返回引用类型的值修改给定整形数组的给定索引的值
+int &get(int *p, int index);
+//递归输出vector对象中的值
+void printVectorWithRecursion(const vector<string> &vec,  vector<string>::size_type index);
+//一个函数的声明，返回数组的引用并且数组包含10个string对象，使用别名或者直接声明
+//StrArry &aFunc();
+//string (&otherFunc())[10];
+//使用尾置返回类型和decltype
+//auto anotherFunc() -> string(&)[10];
+//string stra[10];
+//decltype(stra) &someFunc();
+//将arrPtr的返回类型改成引用
+extern int odd[5];
+decltype(odd) &arrPtr(int i);
+
 #endif
