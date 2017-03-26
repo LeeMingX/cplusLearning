@@ -72,8 +72,71 @@ unsigned staticTest() {
     return rel++;
 }
 
-void exchange(int *p1, int *p2) {
+void swap(int *p1, int *p2) {
     int temp;
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+string::size_type find_char(const string &str, char c, string::size_type &occur) {
+    auto ret = str.size();
+    occur = 0;
+    for (decltype(ret) i = 0; i != str.size(); ++i) {
+        if(str[i] == c) {
+            if(ret == str.size())
+                ret = i;
+            ++occur;
+        }
+    }
+    
+    return ret;
+}
+
+void swapRefer(int &i1, int &i2) {
+    int temp;
+    temp = i1;
+    i1 = i2;
+    i2 = temp;
+}
+
+bool containUpper(const string &str) {
+    auto beg = str.begin();
+    while (beg != str.end()) {
+        if(isupper(*beg)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    return false;
+}
+
+string changeToLower(string &str) {
+    for (auto &c : str) {
+        c = tolower(c);
+    }
+    
+    return str;
+}
+
+int compare(int ival, const int *p) {
+    if (ival > *p) {
+        return ival;
+    } else {
+        return *p;
+    }
+}
+
+void swapPointerWithRefer(int *&p1, int *&p2) {
+    int *temp = p1;
+    p1 = p2;
+    p2 = temp;
+}
+
+void swapPointerWithPointer(int **p1, int **p2) {
+    int *temp;
     temp = *p1;
     *p1 = *p2;
     *p2 = temp;
