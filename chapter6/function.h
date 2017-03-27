@@ -10,7 +10,7 @@ using std::initializer_list;
 
 using StrArry = string[10];
 //求阶乘的函数，val接受要求阶乘的值
-int fact(int val);
+inline int fact(int val);
 //有交互过程的求解阶乘的函数，返回用户输入值的函数
 int mutualFact();
 //递归求阶乘
@@ -30,7 +30,15 @@ void swapRefer(int &i1, int &i2);
 //判断字符串对象中是否含有大写字母
 bool containUpper(const string &str);
 //将字符串对象中全部字符改成小写形式
-string changeToLower(string &str);
+inline string changeToLower(string &str) {
+    if(!str.empty()) {
+        for(auto &c : str) {
+            c = tolower(c);
+        }
+    } else
+        return 0;
+    return str;
+}
 //函数接受两个参数，一个int型的数，一个是int型的指针，比较前者和后者指向的值，返回较大的值
 int compare(int ival, const int *p);
 //函数交换两个int指针,使用引用
@@ -39,7 +47,7 @@ void swapPointerWithRefer(int *&p1, int *&p2);
 void swapPointerWithPointer(int **p1, int **p2);
 //打印数组元素的函数
 void printWithInteger(const int *ia, int val);
-void pringWithPointer(const int *beg, const int *end, int val);
+void printWithPointer(const int *beg, const int *end, int val);
 void printWithFor(const int ia[], size_t n, int i);
 //函数参数是initializer_list<int>类型的对象，函数的功能是计算列表中所有元素的和
 unsigned calArgvSum(initializer_list<int> il);
@@ -57,5 +65,10 @@ void printVectorWithRecursion(const vector<string> &vec,  vector<string>::size_t
 //将arrPtr的返回类型改成引用
 extern int odd[5];
 decltype(odd) &arrPtr(int i);
-
+//给定计数值、单词和结束符之后，判断计数值是否大于一，如果是，返回单词的复数形式，不是返回单词原型
+string make_plural(size_t ctr, const string &word, const string &ending = "s");
+//比较两个string对象的长度
+inline bool isShorter(const string &str1, const string &str2) {
+    return str1.size() < str2.size();
+}
 #endif
