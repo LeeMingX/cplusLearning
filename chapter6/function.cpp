@@ -65,7 +65,7 @@ int main(int argc, const char *argv[]) {
     
     /*int i = 0, j[2] = {0, 1};
     printWithInteger(j, i);
-    pringWithPointer(std::begin(j), std::end(j), i);
+    printWithPointer(std::begin(j), std::end(j), i);
     printWithFor(j, 2, i);*/
     
 //    打印运行main函数时传入的参数
@@ -83,12 +83,30 @@ int main(int argc, const char *argv[]) {
         cout << c << endl;
     }*/
     
-    /*vector<string> vstr{"hello", "pig", "your"};
+    vector<string> vstr{"hello", "pig", "your"};
     auto end = vstr.size() - 1;
-    printVectorWithRecursion(vstr, end);*/
+    printVectorWithRecursion(vstr, end);
     
-    arrPtr(2)[2] = 6;
-    cout << arrPtr(2)[2] << endl;
+    /*arrPtr(2)[2] = 6;
+    cout << arrPtr(2)[2] << endl;*/
+    
+    /*cout << "Enter the number: " << endl;
+    string s1 = "success";
+    string s2 = "failure";
+    auto nos1 = s1.size();
+    auto nos2 = s2.size();
+    cout << make_plural(nos1, s1) << " " << make_plural(nos2, s2) << endl;*/
+    
+//    内联函数测试
+    /*if(isShorter("strng", "String")) {
+        cout << "string shorter than String." << endl;
+    } else {
+        cout << "string longer than String." << endl;
+    }
+    
+    string str = "To My Pig";
+    string &rstr = str;
+    cout << changeToLower(rstr) << endl;*/
     
     
     return 0;
