@@ -5,13 +5,14 @@
 //  Created by 李璇 on 2017/3/25.
 //  Copyright © 2017年 李璇. All rights reserved.
 //
-
+//#define NDEBUG
 #include <stdio.h>
 #include "function.h"
 #include <iostream>
 #include <string>
 #include <cctype>
 #include <cstring>
+#include <cassert>
 using std::cin; using std::cout; using std::cerr;
 using std::endl;
 using std::string;
@@ -44,7 +45,7 @@ int mutualFact() {
 }
 
 int recursionFact(int val) {
-    if(val == 0 || val == 1) {
+    if(val <= 1) {
         return 1;
     } else {
         return fact(val - 1) * val;
@@ -112,13 +113,13 @@ bool containUpper(const string &str) {
     return false;
 }
 
-string changeToLower(string &str) {
+/*string changeToLower(string &str) {
     for (auto &c : str) {
         c = tolower(c);
     }
     
     return str;
-}
+}*/
 
 int compare(int ival, const int *p) {
     if (ival > *p) {
@@ -150,7 +151,7 @@ void printWithInteger(const int *ia, int val) {
     }
 }
 
-void pringWithPointer(const int *beg, const int *end, int val) {
+void printWithPointer(const int *beg, const int *end, int val) {
     for (; beg != end; ++beg) {
         if(*beg != val) {
             cout << *beg << endl;
@@ -193,8 +194,25 @@ int &get(int *p, int index) {
     return p[index];
 }
 
-void printVectorWithRecursion(const vector<string> &vec, vector<string>::size_type index) {
+/*void printVectorWithRecursion(const vector<string> &vec, vector<string>::size_type index) {
     if(index > 0) {
+        cout << vec[index] << endl;
+        printVectorWithRecursion(vec, index - 1);
+    } else
+        cout << vec[index] << endl;
+}*/
+
+//利用assert(expr)来进行调试帮助
+void printVectorWithRecursion(const vector<string> &vec, vector<string>::size_type index) {
+#ifndef NDEBUG
+    if(index < 4)
+        cerr << "Error: " << __FILE__ << " : in function: " <<
+        __func__ << " at line: " << __LINE__ << endl <<
+        " Compiled on: " << __TIME__ << endl <<
+        " Index read was \"" << index << "\" Length too small.." << endl;
+#endif
+    if(index > 0) {
+//        assert(sizeof(vec[index]) < 4);
         cout << vec[index] << endl;
         printVectorWithRecursion(vec, index - 1);
     } else
@@ -207,5 +225,9 @@ int odd[] = {1, 3, 5, 7, 9};
 int even[] = {0, 2, 4, 6, 8};
 decltype(odd) &arrPtr(int i) {
     return i % 2 == 0 ? odd : even;
+}
+
+string make_plural(size_t ctr, const string &word, const string &ending) {
+    return ctr > 1 ? word + ending : word;
 }
 
