@@ -71,4 +71,15 @@ string make_plural(size_t ctr, const string &word, const string &ending = "s");
 inline bool isShorter(const string &str1, const string &str2) {
     return str1.size() < str2.size();
 }
+//测试函数匹配的四个示例函数
+void print();
+void print(int);
+void print(int, int);
+void print(double, double d2 = 3.14);
+//编写一个函数的声明，接受两个int类型的形参，返回值也是int类型
+int func(int, int);
+int add(int, int);
+int sub(int, int);
+int multi(int, int);
+int dev(int, int);
 #endif

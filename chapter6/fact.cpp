@@ -231,3 +231,33 @@ string make_plural(size_t ctr, const string &word, const string &ending) {
     return ctr > 1 ? word + ending : word;
 }
 
+void print() {
+    cout << "nothing to print.." << endl;
+}
+
+void print(int i) {
+    cout << i << " is the number.." << endl;
+}
+
+void print(int i1, int i2) {
+    cout << i1 << " and " << i2 << endl;
+}
+
+void print(double d1, double d2) {
+    cout << d1 << " and " << d2 << " is two double type." << endl;
+}
+
+int add(int i1, int i2) {
+    return i1 + i2;
+}
+
+int sub(int i1, int i2) {
+    return i1 - i2;
+}
+int multi(int i1, int i2) {
+    return i1 * i2;
+}
+int dev(int i1, int i2) {
+    return i1 / i2;
+}
+

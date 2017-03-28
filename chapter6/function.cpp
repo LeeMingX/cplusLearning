@@ -21,7 +21,7 @@ using std::string;
 using std::vector;
 using std::runtime_error;
 
-int main(int argc, const char *argv[]) {
+int function(int argc, const char *argv[]) {
     
     /*int i1,i2;
     cout << "Enter two numbers: " << endl;
@@ -83,9 +83,9 @@ int main(int argc, const char *argv[]) {
         cout << c << endl;
     }*/
     
-    vector<string> vstr{"hello", "pig", "your"};
+    /*vector<string> vstr{"hello", "pig", "your"};
     auto end = vstr.size() - 1;
-    printVectorWithRecursion(vstr, end);
+    printVectorWithRecursion(vstr, end);*/
     
     /*arrPtr(2)[2] = 6;
     cout << arrPtr(2)[2] << endl;*/
@@ -107,6 +107,34 @@ int main(int argc, const char *argv[]) {
     string str = "To My Pig";
     string &rstr = str;
     cout << changeToLower(rstr) << endl;*/
+    
+//    这个调用具有二义性，编译器拒绝调用
+//    print(2.56,42);
+    /*print();
+    print(42);
+    print(42, 0);
+    print(2.56);*/
+    
+//    vf这个vector对象中的元素是指向func函数的指针
+    typedef int(*F)(int, int);
+    vector<F> vf;
+    /*using PF = int(*) (int, int);
+    vector<PF> vpf;*/
+    F f1 = add;
+    F f2 = sub;
+    F f3 = multi;
+    F f4 = dev;
+    vf.push_back(f1);
+    vf.push_back(f2);
+    vf.push_back(f3);
+    vf.push_back(f4);
+    
+    for(auto c : vf) {
+        int x = c(5.5, 4);
+        cout << x << endl;
+    }
+    
+    
     
     
     return 0;
