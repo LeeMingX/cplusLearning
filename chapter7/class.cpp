@@ -21,7 +21,7 @@ using std::vector;
 int main(int argc, char * argv[]) {
     
     //使用定义的Sales_data类完成录入和输出数据
-    Sales_data total;
+    /*Sales_data total;
     if(read(cin, total)) {
         Sales_data trans;
         while (read(cin, trans)) {
@@ -35,7 +35,30 @@ int main(int argc, char * argv[]) {
         print(cout, total) << endl;
     } else {
         cerr << "You have to enter some data!!" << endl;
+    }*/
+    //使用istream参数的构造函数实现功能
+    Sales_data total(cin);
+    
+    while (1) {
+        Sales_data trans(cin);
+        if (trans.bookNo != "") {
+            if (trans.isbn() == total.isbn()) {
+                total.combine(trans);
+            } else {
+                print(cout, total);
+                total = trans;
+            }
+        }else {
+            print(cout, total);
+            break;
+        }
     }
+    
+    
+//    Sales_data total =  Sales_data("0-231-34523-x");
+//    Sales_data total;
+//    Sales_data total = Sales_data("0-231-34324-x", 14.7);
+//    Sales_data total = Sales_data(cin);
     
     return 0;
 }

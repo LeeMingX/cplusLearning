@@ -8,6 +8,10 @@
 
 #include "Sales_data.h"
 
+Sales_data::Sales_data(std::istream &is) {
+    read(is, *this);
+}
+
 double Sales_data::avg_Price() const {
     if(saleNum) {
         return revenue / saleNum;
