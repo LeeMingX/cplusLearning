@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Screen.h"
 
 using std::cin; using std::cout; using std::endl;
 using std::cerr;
@@ -37,22 +38,22 @@ int main(int argc, char * argv[]) {
         cerr << "You have to enter some data!!" << endl;
     }*/
     //使用istream参数的构造函数实现功能
-    Sales_data total(cin);
+    /*Sales_data total(cin);
     
     while (1) {
         Sales_data trans(cin);
-        if (trans.bookNo != "") {
+        if (trans.isbn() != "") {
             if (trans.isbn() == total.isbn()) {
                 total.combine(trans);
             } else {
-                print(cout, total);
+                print(cout, total) << endl;
                 total = trans;
             }
         }else {
-            print(cout, total);
+            print(cout, total) << endl;
             break;
         }
-    }
+    }*/
     
     
 //    Sales_data total =  Sales_data("0-231-34523-x");
@@ -60,5 +61,10 @@ int main(int argc, char * argv[]) {
 //    Sales_data total = Sales_data("0-231-34324-x", 14.7);
 //    Sales_data total = Sales_data(cin);
     
+    Screen myScreen(5, 5, 'X');
+    myScreen.move(4, 0).set('#').display(cout);
+    cout << "\n";
+    myScreen.display(cout);
+    cout << "\n";
     return 0;
 }
